@@ -1,0 +1,15 @@
+﻿@using WebBanSach.Models;
+@model List<chude>
+
+<section>
+    @* Phần chủ đề *@
+    <div>
+        @foreach (var item in Model)
+        {
+            <a href="#" class="button button-submit">@item.TenChuDe</a>
+        }
+        <a href="#" class="button">Xem thêm</a>
+
+    </div>
+    <hr>
+</section>

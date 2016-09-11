@@ -1,0 +1,18 @@
+﻿@using WebBanSach.Models;
+@model List<nhaxuatban>
+
+
+<div class="item-info">
+    <h1>Nhà xuất bản</h1>
+    @foreach (var item in Model)
+    {
+        <img src="~/Assets/images/rs_Chrysanthemum.jpg" alt="Image">
+        <span class="price">@item.TenNXB</span>
+        <p>@item.DiaChi</p>       
+        <a href="#" class="button button-buy">Xem thêm</a>
+         <br />
+         <br />
+    }
+   
+</div>
+
