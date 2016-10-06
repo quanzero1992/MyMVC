@@ -7,11 +7,17 @@
 {
     <div class="activity-list-update">
         <img src="~/Assets/images/6464.png" alt="Image">
-        <p><strong>@item.TenSach</strong> updated his <a href="#">user profile</a>.</p>
+        @{
+            if (item.TenSach.Length > 30)
+            {  <p><strong>@item.TenSach.ToString().Substring(0,30) ...<a href="@Url.Action("XemChiTiet", new {@masach = item.MaSach})">Xem chi tiết</a>.</p>}
+            else
+            {  <p><strong>@item.TenSach</strong> updated his <a href="@Url.Action("XemChiTiet", new {@masach = item.MaSach})">Xem chi tiết</a>.</p>}
+            
+        }
+
         <div class="clear"></div>
     </div>
 }
 
-<a href="#" class="item-footer green">
-    See all activity
+<a href="#" class="item-footer green">See all activity
 </a>

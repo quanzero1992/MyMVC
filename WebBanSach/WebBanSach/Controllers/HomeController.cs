@@ -15,11 +15,8 @@ namespace WebBanSach.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(db.saches.Take(10).Where(x=>x.Moi ==1).ToList<sach>());
         }
-
-      
-
       
     }
 }

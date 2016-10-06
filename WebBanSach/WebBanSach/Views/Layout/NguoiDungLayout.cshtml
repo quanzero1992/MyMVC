@@ -42,11 +42,11 @@
 
                 <div class="DangKyDangNhap">
                     <i class="fa fa-unlock" aria-hidden="true">
-                        @Html.ActionLink("Đăng nhập", "DangNhap", null, new { @class = "DangNhap" })
+                        @Html.ActionLink("Đăng nhập", "DangNhap", "NguoiDung")
                     </i>
                     &nbsp;
                     <i class="fa fa-sign-in" aria-hidden="true">
-                        @Html.ActionLink(" Đăng ký ", "Dangky", null, new { @class = "DangKy" })
+                        @Html.ActionLink("Đăng ký", "DangKy", "NguoiDung")
                     </i>
                 </div>
             </div>
@@ -61,7 +61,7 @@
 
 
                 <ul class="NavMenu">
-                    <li><a href="#">Trang chủ</a></li>
+                    <li>@Html.ActionLink("Trang chủ", "index", "Home")</li>
                     <li><a href="#">Giới thiệu</a></li>
                     <li><a href="#">Liên hệ</a></li>
                     <li><a href="#">Hướng dẫn</a></li>
@@ -95,9 +95,16 @@
         @Html.Action("ChuDePartial", "ChuDe");
 
         <section class="blank items">
-            <div id="DivLeft">
-                <div class="item">
-                    @Html.Action("NhaXuatBanPartial", "NhaXuatBan");
+            <div id="Content1">
+                <div id="DivLeft">
+                    <div class="item">
+                        @Html.Action("NhaXuatBanPartial", "NhaXuatBan");
+                    </div>
+                </div>
+                <div id="DivRight">
+                    <div class="item">
+                        @Html.Action("NhaXuatBanPartial", "NhaXuatBan");
+                    </div>
                 </div>
             </div>
 

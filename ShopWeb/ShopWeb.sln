@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopWeb", "ShopWeb\ShopWeb.csproj", "{307CF15C-2B29-4E9F-8096-DB46B8D5A462}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopWeb.Tests", "ShopWeb.Tests\ShopWeb.Tests.csproj", "{BD7F0498-5864-417B-B39A-6E1C4B5A3015}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{307CF15C-2B29-4E9F-8096-DB46B8D5A462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{307CF15C-2B29-4E9F-8096-DB46B8D5A462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{307CF15C-2B29-4E9F-8096-DB46B8D5A462}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{307CF15C-2B29-4E9F-8096-DB46B8D5A462}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD7F0498-5864-417B-B39A-6E1C4B5A3015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD7F0498-5864-417B-B39A-6E1C4B5A3015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD7F0498-5864-417B-B39A-6E1C4B5A3015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD7F0498-5864-417B-B39A-6E1C4B5A3015}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

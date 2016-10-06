@@ -24,5 +24,16 @@ namespace WebBanSach.Controllers
             return PartialView(lstSachMoi);
         }
 
+        public ViewResult XemChiTiet(int MaSach=0)
+        {
+            sach detal = db.saches.SingleOrDefault(x => x.MaSach == MaSach);
+            if (detal == null)
+            {
+                Response.Status = "404";
+                return null;
+            }
+            return View(detal);
+        }
+
     }
 }

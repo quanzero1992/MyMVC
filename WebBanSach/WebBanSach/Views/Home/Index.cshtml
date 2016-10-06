@@ -1,6 +1,49 @@
-﻿@{
+﻿@using WebBanSach.Models;
+@model List<sach>
+
+
+@{   
+    ViewBag.Title = "Trang chủ";
     Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
-    ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+
+<link href="~/Assets/LayoutCss/IndexCss.css" rel="stylesheet" />
+<div id="NoiDungBenPhai">
+</div>
+<div id="DivBody">
+    @{int i = 0;}
+    @foreach (var item in Model)
+    {
+        i++;
+        <div id="SanPham">
+            <a href="@Url.Action("xemchitiet", "sach", new { @masach = item.MaSach })">
+                <div id="AnhBia">
+                    <img src='@item.AnhBia' / width="200" height="300">
+                </div>
+                @{
+                    if (item.TenSach.Length > 50)
+                    {
+                        <div id="TenSach">
+                            @item.TenSach.ToString().Substring(0, 50) ...
+                        </div>
+                    }
+                    else
+                    {
+                        <div id="TenSach">
+                            @item.TenSach
+                            @*@item.TenSach*@
+                        </div>
+                    }
+                }
+            </a>
+            <div id="GiaTien">@item.GiaBan</div>
+        </div>
+        
+        if (i % 3 == 0)
+        {
+        <div style="clear: both"></div>
+        }
+    }
+
+</div>

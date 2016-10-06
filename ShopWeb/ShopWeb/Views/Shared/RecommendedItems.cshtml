@@ -1,0 +1,90 @@
+﻿@using ShopWeb.Models;
+@using System.Linq;
+@using System.Web.Configuration;
+@model List<product>
+<div class="recommended_items">
+    <!--recommended_items-->
+    <h2 class="title text-center">recommended items</h2>
+
+    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="col-sm-4">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="~/assets/images/home/recommend1.jpg" alt="" />
+                                <h2>$56</h2>
+                                <p>Easy Polo Black Edition</p>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="~/assets/images/home/recommend2.jpg" alt="" />
+                                <h2>$56</h2>
+                                <p>Easy Polo Black Edition</p>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="~/assets/images/home/recommend3.jpg" alt="" />
+                                <h2>$56</h2>
+                                <p>Easy Polo Black Edition</p>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @{int i = 0;}
+            @{string imgserver = WebConfigurationManager.AppSettings["ImageServer"].ToString();}
+            @{List<product> ChildModel =  Model.Where(x => x.Brands == "Gucci").ToList<product>(); }
+            @for (int x = 0; x < ChildModel.Count;x++ )
+            {
+                if (i % 3 == 0)
+                {
+                    @:<div class="item">
+                }
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="@Url.Content(@imgserver + @ChildModel[x].MainImage)" alt="" />
+                                        <h2>@ChildModel[x].Price.Value.ToString("#,#")</h2>
+                                        <p>@ChildModel[x].Name</p>
+                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                i++;
+                if (i % 3 == 0 || i == ChildModel.Count)
+                {
+                    @:</div>
+                }
+            }
+
+        </div>
+        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</div>
+<!--/recommended_items-->

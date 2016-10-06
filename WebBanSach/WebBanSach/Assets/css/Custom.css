@@ -79,11 +79,20 @@ height:50px;
 }
 
 /*dIV NHÀ XUẤT BẢN*/
+Content1 {
+    float:left;
+}
+
 DivLeft {
 width:30%;
-float:left;
+/*float:left;*/
 }
 
     DivLeft .item {
     width:100%;
     }
+
+DivRight {
+    /*float:left;*/
+
+}
