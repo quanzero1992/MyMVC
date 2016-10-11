@@ -1,0 +1,97 @@
+﻿@using ShopWeb.Models;
+@using ShopWeb.Controllers;
+@model List<brand>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section AddCss
+{
+    <link href=@Url.Content("~/Areas/Admin/Assets/plugins/datatables/dataTables.bootstrap.css") rel="stylesheet" />
+}
+
+@{
+    CommonDictionary.LoadAllDictionary();
+    List<brand> xx = CommonDictionary.db.brands.ToList();
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Data Table With Full Features</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Tên thương hiệu</th>
+                                <th>Điểm đánh giá</th>
+                                <th>Đường dẫn</th>
+                                <th>Số sản phẩm</th>
+                                <th>Mô tả</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.BrandName</td>
+                                    <td>@item.Star</td>
+                                    <td>@item.Link</td>
+                                    <td>@item.Products</td>
+                                    <td>@item.Description</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Tên thương hiệu</th>
+                                <th>Điểm đánh giá</th>
+                                <th>Đường dẫn</th>
+                                <th>Số sản phẩm</th>
+                                <th>Mô tả</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+
+<!-- ./wrapper -->
+
+@section AddJs
+{
+    @* <script src=@Url.Content("~/Areas/Admin/Assets/plugins/jQuery/jquery-2.2.3.min.js")></script>
+ *@
+    <!-- DataTables -->
+    <script src=@Url.Content("~/Areas/Admin/Assets/plugins/datatables/jquery.dataTables.min.js")></script>
+    <script src=@Url.Content("~/Areas/Admin/Assets/plugins/datatables/dataTables.bootstrap.min.js")></script>
+
+    <!-- AdminLTE for demo purposes -->
+    <!-- page script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        });
+        </script>
+}

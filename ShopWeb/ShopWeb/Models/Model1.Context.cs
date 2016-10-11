@@ -33,5 +33,8 @@ namespace ShopWeb.Models
         public virtual DbSet<review> reviews { get; set; }
         public virtual DbSet<sociallink> sociallinks { get; set; }
         public virtual DbSet<webconfig> webconfigs { get; set; }
+        public virtual DbSet<category> categories { get; set; }
+        public virtual DbSet<category_brand> category_brand { get; set; }
+        public virtual DbSet<producttype> producttypes { get; set; }
     }
 }

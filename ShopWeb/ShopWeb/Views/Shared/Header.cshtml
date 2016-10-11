@@ -2,6 +2,12 @@
     ViewBag.Title = "Header";
 }
 
+@using ShopWeb.Models;
+@using ShopWeb.Controllers;
+@{
+    CommonDictionary.LoadAllDictionary();
+    List<sociallink> social = CommonDictionary.db.sociallinks.ToList();
+}
     <header id="header">
         <!--header-->
         <div class="header_top">
@@ -19,11 +25,12 @@
                     <div class="col-sm-6">
                         <div class="social-icons pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                @foreach (var item in social)
+                                {
+                                     <li><a href="@item.Link"><i class="@item.Class"></i></a></li>
+                                }
+                                
+                       
                             </ul>
                         </div>
                     </div>
@@ -98,10 +105,10 @@
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index.html" class="active">Home</a></li>
+                                <li><a href="index.html" class="active">Trang chủ</a></li>
                                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="@Url.Action("index","product")">Products</a></li>
+                                        <li><a href="@Url.Action("index","product")">Sản phẩm</a></li>
                                         <li><a href="@Url.Action("productdetail","product")">Product Details</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
                                         <li><a href="cart.html">Cart</a></li>

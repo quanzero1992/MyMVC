@@ -13,6 +13,9 @@
         <EntityTypeShape EntityType="eshopperModel.review" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="eshopperModel.sociallink" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="eshopperModel.webconfig" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eshopperModel.category" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="eshopperModel.category_brand" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="eshopperModel.producttype" Width="1.5" PointX="7.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

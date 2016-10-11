@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using ShopWeb.Models;
+@using ShopWeb.Controllers;
+@model List<category>
+
+
+@section AddCss
+{
+    <link href="@Url.Content("~/Areas/Admin/Assets/plugins/datatables/dataTables.bootstrap.css")" rel="stylesheet" />
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Danh sách các danh mục</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Danh mục</th>
+                                <th>Ký hiệu</th>
+                                <th>Kết nối thương hiệu</th>
+                                <th>Mô tả</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Symbol</td>
+                                    <td>@item.Category_Brand</td>
+                                    <td>@item.Desc</td>
+                                    <td>@item.id</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Danh mục</th>
+                                <th>Ký hiệu</th>
+                                <th>Kết nối thương hiệu</th>
+                                <th>Mô tả</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+
+<!-- ./wrapper -->
+
+@section AddJs
+{
+    @* <script src=@Url.Content("~/Areas/Admin/Assets/plugins/jQuery/jquery-2.2.3.min.js")></script>
+ *@
+    <!-- DataTables -->
+    <script src=@Url.Content("~/Areas/Admin/Assets/plugins/datatables/jquery.dataTables.min.js")></script>
+    <script src=@Url.Content("~/Areas/Admin/Assets/plugins/datatables/dataTables.bootstrap.min.js")></script>
+
+    <!-- AdminLTE for demo purposes -->
+    <!-- page script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        });
+        </script>
+}

@@ -20,5 +20,7 @@ namespace ShopWeb.Models
         public Nullable<int> Star { get; set; }
         public Nullable<sbyte> Status { get; set; }
         public string Image { get; set; }
+        public string Link { get; set; }
+        public Nullable<int> Products { get; set; }
     }
 }

@@ -22,5 +22,6 @@ namespace ShopWeb.Models
         public Nullable<int> Condition { get; set; }
         public string MainImage { get; set; }
         public Nullable<sbyte> Status { get; set; }
+        public Nullable<int> ProductTypeID { get; set; }
     }
 }
