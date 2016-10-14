@@ -164,6 +164,9 @@
     <Compile Include="Models\category_brand.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\condition.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\menu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
