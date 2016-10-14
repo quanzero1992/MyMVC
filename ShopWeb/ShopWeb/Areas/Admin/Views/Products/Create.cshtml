@@ -1,0 +1,155 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using ShopWeb.Models;
+@model ShopWeb.Models.product
+
+@section AddCss
+{
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="@Url.Content("~/Areas/Admin/Assets/plugins/iCheck/all.css")">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="@Url.Content("~/Areas/Admin/Assets/plugins/colorpicker/bootstrap-colorpicker.min.css")">
+    <!-- Bootstrap time Picker -->
+    <link rel="stylesheet" href="@Url.Content("~/Areas/Admin/Assets/plugins/timepicker/bootstrap-timepicker.min.css")">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="@Url.Content("~/Areas/Admin/Assets/plugins/select2/select2.min.css")">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="@Url.Content("~/Areas/Admin/Assets/dist/css/AdminLTE.min.css")">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="@Url.Content("~/Areas/Admin/Assets/dist/css/skins/_all-skins.min.css")">
+}
+<section class="content">
+    <div class="row">
+        @* Thông tin chi tiết sản phẩm *@
+        <div class="col-md-8">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Horizontal Form</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+
+                @using (Html.BeginForm(new { @class = "form-horizontal" }))
+                {
+                    <div class="box-body">
+                        @* @Html.AntiForgeryToken()*@
+                        @Html.ValidationSummary(true)
+
+
+                        <div class="form-group">
+                            <label>@Html.LabelFor(x => x.Name)</label>
+
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Name)
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.LabelFor(x => x.DateImport)</label>
+
+                            @Html.TextBoxFor(x => x.DateImport, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.DateImport)
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.LabelFor(x => x.Price)</label>
+
+                            @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Price)
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.LabelFor(x => x.Brands)</label>
+
+                            @Html.TextBoxFor(x => x.Brands, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Brands)
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.LabelFor(x => x.Condition)</label>
+
+                            @Html.TextBoxFor(x => x.Condition, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Condition)
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.LabelFor(x => x.Status)</label>
+
+                            @Html.TextBoxFor(x => x.Status, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Status)
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.LabelFor(x => x.ProductTypeID)</label>
+
+                            @Html.TextBoxFor(x => x.ProductTypeID, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.ProductTypeID)
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        @Html.ActionLink("Trở lại", "Index")
+                        <button type="submit" class="btn btn-info pull-right">Tạo mới</button>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-md-4">
+            <!-- Hình ảnh sản phẩm -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Hình ảnh sản phẩm</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">File input</label>
+                            <input type="file" id="exampleInputFile">
+
+                            <p class="help-block">Example block-level help text here.</p>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox">
+                                Tự động tạo thumnail
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+</section>
+@section AddJs
+{
+    <!-- Select2 -->
+    <script src="@Url.Content("~/Areas/Admin/Assets/plugins/select2/select2.full.min.js")"></script>
+    <!-- InputMask -->
+    <script src="@Url.Content("~/Areas/Admin/Assets/plugins/input-mask/jquery.inputmask.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Assets/plugins/input-mask/jquery.inputmask.date.extensions.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Assets/plugins/input-mask/jquery.inputmask.extensions.js")"></script>
+    <!-- date-range-picker -->
+    <!-- bootstrap color picker -->
+    <script src="@Url.Content("~/Areas/Admin/Assets/plugins/colorpicker/bootstrap-colorpicker.min.js")"></script>
+    <!-- bootstrap time picker -->
+    <script src="@Url.Content("~/Areas/Admin/Assets/plugins/timepicker/bootstrap-timepicker.min.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Assets/plugins/iCheck/icheck.min.js")"></script>
+}

@@ -51,7 +51,7 @@
             </div>
             @{int i = 0;}
             @{string imgserver = WebConfigurationManager.AppSettings["ImageServer"].ToString();}
-            @{List<product> ChildModel =  Model.Where(x => x.Brands == "Gucci").ToList<product>(); }
+            @{List<product> ChildModel =  Model.Where(x => x.Brands == 1).ToList<product>(); }
             @for (int x = 0; x < ChildModel.Count;x++ )
             {
                 if (i % 3 == 0)

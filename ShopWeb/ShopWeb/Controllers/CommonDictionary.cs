@@ -17,6 +17,7 @@ namespace ShopWeb.Controllers
             db.categories.AsEnumerable();
             db.category_brand.AsEnumerable();
             db.sociallinks.AsEnumerable();
+            db.conditions.AsEnumerable();
         }
 
     }

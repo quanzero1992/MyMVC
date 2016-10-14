@@ -12,17 +12,11 @@ namespace ShopWeb.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class product
+    public partial class condition
     {
         public int ID { get; set; }
+        public Nullable<int> ConditionID { get; set; }
         public string Name { get; set; }
-        public Nullable<System.DateTime> DateImport { get; set; }
-        public Nullable<int> Price { get; set; }
-        public Nullable<int> Stars { get; set; }
-        public Nullable<int> Brands { get; set; }
-        public Nullable<int> Condition { get; set; }
-        public string MainImage { get; set; }
-        public Nullable<sbyte> Status { get; set; }
-        public Nullable<int> ProductTypeID { get; set; }
+        public string Description { get; set; }
     }
 }

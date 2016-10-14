@@ -36,6 +36,15 @@
           <Property Name="Category_Brand_ID" Type="int" />
           <Property Name="BrandID" Type="int" />
         </EntityType>
+        <EntityType Name="condition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConditionID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="menu">
           <Key>
             <PropertyRef Name="Id" />
@@ -53,9 +62,10 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="DateImport" Type="datetime" Precision="0" />
           <Property Name="Price" Type="int" />
           <Property Name="Stars" Type="int" />
-          <Property Name="Brands" Type="varchar" MaxLength="255" />
+          <Property Name="Brands" Type="int" />
           <Property Name="Condition" Type="int" />
           <Property Name="MainImage" Type="varchar" MaxLength="255" />
           <Property Name="Status" Type="tinyint" />
@@ -120,6 +130,7 @@
           <EntitySet Name="brand" EntityType="Self.brand" Schema="eshopper" store:Type="Tables" />
           <EntitySet Name="category" EntityType="Self.category" Schema="eshopper" store:Type="Tables" />
           <EntitySet Name="category_brand" EntityType="Self.category_brand" Schema="eshopper" store:Type="Tables" />
+          <EntitySet Name="condition" EntityType="Self.condition" Schema="eshopper" store:Type="Tables" />
           <EntitySet Name="menu" EntityType="Self.menu" Schema="eshopper" store:Type="Tables" />
           <EntitySet Name="product" EntityType="Self.product" Schema="eshopper" store:Type="Tables" />
           <EntitySet Name="productdetail" EntityType="Self.productdetail" Schema="eshopper" store:Type="Tables" />
@@ -156,20 +167,6 @@
           <Property Name="C_Order_" Type="Int32" />
           <Property Name="ParentID" Type="Int32" />
           <Property Name="Status" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="product">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="Int32" />
-          <Property Name="Stars" Type="Int32" />
-          <Property Name="Brands" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Condition" Type="Int32" />
-          <Property Name="MainImage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="SByte" />
-          <Property Name="ProductTypeID" Type="Int32" />
         </EntityType>
         <EntityType Name="productdetail">
           <Key>
@@ -221,7 +218,6 @@
         <EntityContainer Name="eshopperEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="brands" EntityType="Self.brand" />
           <EntitySet Name="menus" EntityType="Self.menu" />
-          <EntitySet Name="products" EntityType="Self.product" />
           <EntitySet Name="productdetails" EntityType="Self.productdetail" />
           <EntitySet Name="productimages" EntityType="Self.productimage" />
           <EntitySet Name="reviews" EntityType="Self.review" />
@@ -230,6 +226,8 @@
           <EntitySet Name="categories" EntityType="eshopperModel.category" />
           <EntitySet Name="category_brand" EntityType="eshopperModel.category_brand" />
           <EntitySet Name="producttypes" EntityType="eshopperModel.producttype" />
+          <EntitySet Name="conditions" EntityType="eshopperModel.condition" />
+          <EntitySet Name="products" EntityType="eshopperModel.product" />
         </EntityContainer>
         <EntityType Name="category">
           <Key>
@@ -256,6 +254,30 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="P_TypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="P_TypeDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="condition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConditionID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DateImport" Type="DateTime" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Stars" Type="Int32" />
+          <Property Name="Brands" Type="Int32" />
+          <Property Name="Condition" Type="Int32" />
+          <Property Name="MainImage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="SByte" />
+          <Property Name="ProductTypeID" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -285,21 +307,6 @@
                 <ScalarProperty Name="Link" ColumnName="Link" />
                 <ScalarProperty Name="C_Order_" ColumnName="[Order]" />
                 <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="products">
-            <EntityTypeMapping TypeName="eshopperModel.product">
-              <MappingFragment StoreEntitySet="product">
-                <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Stars" ColumnName="Stars" />
-                <ScalarProperty Name="Brands" ColumnName="Brands" />
-                <ScalarProperty Name="Condition" ColumnName="Condition" />
-                <ScalarProperty Name="MainImage" ColumnName="MainImage" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -382,6 +389,32 @@
                 <ScalarProperty Name="P_TypeDescription" ColumnName="P_TypeDescription" />
                 <ScalarProperty Name="P_TypeName" ColumnName="P_TypeName" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="conditions">
+            <EntityTypeMapping TypeName="eshopperModel.condition">
+              <MappingFragment StoreEntitySet="condition">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ConditionID" ColumnName="ConditionID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="eshopperModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MainImage" ColumnName="MainImage" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Brands" ColumnName="Brands" />
+                <ScalarProperty Name="Stars" ColumnName="Stars" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DateImport" ColumnName="DateImport" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

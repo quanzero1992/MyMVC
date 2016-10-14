@@ -16,7 +16,7 @@
     <!--features_items-->
     <h2 class="title text-center">Features Items</h2>
 
-    @foreach (var item in @Model.Where(x => x.Brands == "Gucci").ToList())
+    @foreach (var item in @Model.Where(x => x.Brands == 1).ToList())
     {
         <div class="col-sm-4">
             <div class="product-image-wrapper">

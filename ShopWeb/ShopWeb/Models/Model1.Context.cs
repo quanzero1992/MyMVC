@@ -27,7 +27,6 @@ namespace ShopWeb.Models
     
         public virtual DbSet<brand> brands { get; set; }
         public virtual DbSet<menu> menus { get; set; }
-        public virtual DbSet<product> products { get; set; }
         public virtual DbSet<productdetail> productdetails { get; set; }
         public virtual DbSet<productimage> productimages { get; set; }
         public virtual DbSet<review> reviews { get; set; }
@@ -36,5 +35,7 @@ namespace ShopWeb.Models
         public virtual DbSet<category> categories { get; set; }
         public virtual DbSet<category_brand> category_brand { get; set; }
         public virtual DbSet<producttype> producttypes { get; set; }
+        public virtual DbSet<condition> conditions { get; set; }
+        public virtual DbSet<product> products { get; set; }
     }
 }

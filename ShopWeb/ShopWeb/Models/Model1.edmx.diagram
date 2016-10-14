@@ -7,7 +7,6 @@
       <Diagram DiagramId="cb82f1c6a849401a83f77cc8edc5dcbd" Name="Diagram1">
         <EntityTypeShape EntityType="eshopperModel.brand" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="eshopperModel.menu" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="eshopperModel.product" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="eshopperModel.productdetail" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="eshopperModel.productimage" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="eshopperModel.review" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
@@ -16,6 +15,8 @@
         <EntityTypeShape EntityType="eshopperModel.category" Width="1.5" PointX="5.375" PointY="6.75" />
         <EntityTypeShape EntityType="eshopperModel.category_brand" Width="1.5" PointX="7.375" PointY="3.75" />
         <EntityTypeShape EntityType="eshopperModel.producttype" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="eshopperModel.condition" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="eshopperModel.product" Width="1.5" PointX="0.625" PointY="6.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

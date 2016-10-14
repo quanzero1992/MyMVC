@@ -47,9 +47,7 @@ namespace ShopWeb.Models
                 .Property(e => e.Name)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<product>()
-                .Property(e => e.Brands)
-                .IsUnicode(false);
+         
 
             modelBuilder.Entity<product>()
                 .Property(e => e.MainImage)

@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using ShopWeb.Models;
+@using ShopWeb.Controllers;
+@using System.Linq;
+@model List<product>
+
+@{
+    CommonDictionary.LoadAllDictionary();
+    IEnumerable<producttype> pType = CommonDictionary.db.producttypes.AsEnumerable();
+    IEnumerable<condition> pCond = CommonDictionary.db.conditions.AsEnumerable();
+    IEnumerable<brand> pBrand = CommonDictionary.db.brands.AsEnumerable();
+}
+
+@section AddCss
+{
+    <link href="@Url.Content("~/Areas/Admin/Assets/plugins/datatables/dataTables.bootstrap.css")" rel="stylesheet" />
+    <style type="text/css">
+        .highlight { background-color: yellow }
+    </style>
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Danh sách sản phẩm</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Mã sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Ngày nhập</th>
+                                <th>Giá</th>
+                                <th>Điểm</th>
+                                <th>Nhãn hiệu</th>
+                                <th>Mới/cũ</th>
+                                <th class="no-sort">Loại sản phẩm</th>
+                                <th class="no-sort">Trạng thái</th>
+                                <th style="text-align:center" class="no-sort">#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.DateImport</td>
+                                    <td>@item.Price.Value.ToString("#,#")</td>
+                                    <td>@item.Stars</td>
+                                    <td>@pBrand.FirstOrDefault(x=>x.ID == item.Brands.ConvertToInt()).BrandName</td>
+                                    <td>@pCond.FirstOrDefault(x=>x.ConditionID == item.Condition).Description</td>
+                                    <td>@pType.FirstOrDefault(x=>x.id == item.ProductTypeID).P_TypeName</td>
+                                    <td>@item.Status</td>
+                                    <td> 
+                                        <a href="@Url.Action("Create","Products")" title="Thêm mới"> <i class="fa fa-plus-square" aria-hidden="true"></i> </a> &nbsp; | &nbsp;
+                                        <a href="#" title="Sửa"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a> &nbsp; | &nbsp;
+                                        <a href="#" title="Xóa"> <i class="fa fa-trash" aria-hidden="true"></i> </a>
+
+                                    </td> 
+                                </tr>
+                            }
+                        </tbody>
+                
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+
+<!-- ./wrapper -->
+
+@section AddJs
+{
+    <!-- DataTables -->
+    <script src="@Url.Content("~/Areas/Admin/Assets/plugins/datatables/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Assets/plugins/datatables/dataTables.bootstrap.min.js")"></script>
+    <!-- AdminLTE for demo purposes -->
+    <!-- page script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "ordering": true,
+                "columnDefs": [{
+                    "targets": 'no-sort',
+                    "orderable": false,
+                }]
+            });
+     
+        });
+
+        </script>
+}
+
