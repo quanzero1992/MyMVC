@@ -249,6 +249,7 @@
     <Content Include="Areas\Admin\Assets\dist\css\skins\skin-yellow.min.css" />
     <Content Include="Areas\Admin\Assets\dist\css\skins\_all-skins.css" />
     <Content Include="Areas\Admin\Assets\dist\css\skins\_all-skins.min.css" />
+    <Content Include="Areas\Admin\Assets\dist\img\300x300.jpg" />
     <Content Include="Areas\Admin\Assets\dist\img\avatar.png" />
     <Content Include="Areas\Admin\Assets\dist\img\avatar04.png" />
     <Content Include="Areas\Admin\Assets\dist\img\avatar2.png" />
