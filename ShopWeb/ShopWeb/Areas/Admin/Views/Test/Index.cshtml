@@ -48,25 +48,18 @@
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" id ="MainImage" alt="User profile picture">
+                    <img class="profile-user-img img-responsive img-circle" alt="User profile picture" src="@Url.Content("~/Areas/Admin/Assets/dist/img/user7-128x128.jpg")" id="MainImage">
 
                     <h3 class="profile-username text-center">Áo thu đông aOneMall</h3>
 
                     <p class="text-muted text-center">Software Engineer</p>
+                    
+                        <label class="btn btn-primary btn-block" id="exampleInputFile" onchange="onFileSelected(event)">
+                        <b>Thay đổi hình ảnh </b><input type="file"  style="display: none;">
+                        </label>
 
-                    <ul class="list-group list-group-unbordered">
-                        <li class="list-group-item">
-                            <b>Followers</b> <a class="pull-right">1,322</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Following</b> <a class="pull-right">543</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Friends</b> <a class="pull-right">13,287</a>
-                        </li>
-                    </ul>
-                    <input type="file" id="exampleInputFile" onchange="onFileSelected(event)>
-                    <a href="#" class="btn btn-primary btn-block"><b> Thay đổi hình ảnh</b></a>
+                    @*<input type="file" id="exampleInputFile" onchange="onFileSelected(event)">*@
+                   @* <a href="#" class="btn btn-primary btn-block"><b>Thay đổi hình ảnh</b></a>*@
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -406,18 +399,18 @@
 
 </section>
 
-    <script>
+<script>
     function onFileSelected(event) {
-      var selectedFile = event.target.files[0];
-      var reader = new FileReader();
+        var selectedFile = event.target.files[0];
+        var reader = new FileReader();
 
-      var imgtag = document.getElementById("MainImage");
-      imgtag.title = selectedFile.name;
+        var imgtag = document.getElementById("MainImage");
+        imgtag.title = selectedFile.name;
 
-      reader.onload = function(event) {
-        imgtag.src = event.target.result;
-      };
+        reader.onload = function (event) {
+            imgtag.src = event.target.result;
+        };
 
-      reader.readAsDataURL(selectedFile);
+        reader.readAsDataURL(selectedFile);
     }
-    </script>
+</script>
