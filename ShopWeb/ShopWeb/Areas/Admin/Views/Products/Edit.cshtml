@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Create1";
+    ViewBag.Title = "Sửa sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -80,7 +80,7 @@
                 <div class="tab-content">
                     <div class="active tab-pane" id="settings">
                         @Html.ValidationSummary(true)
-                        @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { @class = "form-horizontal" }))
+                        @using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { @class = "form-horizontal" }))
                         {
                             <div class="form-group">
                                 @Html.LabelFor(x => x.Name, new { @for = "inputName", @class = "col-sm-2 control-label" })
@@ -136,16 +136,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-danger">Thêm mới</button>
+                            <div class="box-footer">
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-danger">Thêm mới</button>
+                                    </div>
                                 </div>
                             </div>
+                             
                         }
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="timeline">
-                        @using (Html.BeginForm("Create", "Products", null, FormMethod.Post,  new { @class = "form-horizontal" }))
+                        @using (Html.BeginForm("Edit", "Products", null, FormMethod.Post, new { @class = "form-horizontal" }))
                         {
                             <div class="box-body">
                                 @* @Html.AntiForgeryToken()*@

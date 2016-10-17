@@ -29,8 +29,9 @@
                                 <th>Danh mục</th>
                                 <th>Ký hiệu</th>
                                 <th>Kết nối thương hiệu</th>
-                                <th>Mô tả</th>
+                                <th class="no-sort">Mô tả</th>
                                 <th>Trạng thái</th>
+                                <th style="text-align: center" class="no-sort">#</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,18 +43,14 @@
                                     <td>@item.Category_Brand</td>
                                     <td>@item.Desc</td>
                                     <td>@item.id</td>
+                                    <td>
+                                        <a href="@Url.Action("Create", "Category")" title="Thêm mới"><i class="fa fa-plus-square" aria-hidden="true"></i></a>&nbsp; | &nbsp;
+                                        <a href="@Url.Action("Edit", "Category", new { id = @item.id })" title="Sửa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp; | &nbsp;
+                                        <a href="@Url.Action("Delete", "Category", new { id = @item.id })" title="Xóa" onclick = "return ConfirmDelete();"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                    </td>
                                 </tr>
                             }
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Danh mục</th>
-                                <th>Ký hiệu</th>
-                                <th>Kết nối thương hiệu</th>
-                                <th>Mô tả</th>
-                                <th>Trạng thái</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->
@@ -73,22 +70,31 @@
     @* <script src=@Url.Content("~/Areas/Admin/Assets/plugins/jQuery/jquery-2.2.3.min.js")></script>
  *@
     <!-- DataTables -->
-    <script src=@Url.Content("~/Areas/Admin/Assets/plugins/datatables/jquery.dataTables.min.js")></script>
-    <script src=@Url.Content("~/Areas/Admin/Assets/plugins/datatables/dataTables.bootstrap.min.js")></script>
+    <script src="@Url.Content("~/Areas/Admin/Assets/plugins/datatables/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Assets/plugins/datatables/dataTables.bootstrap.min.js")"></script>
 
     <!-- AdminLTE for demo purposes -->
     <!-- page script -->
     <script>
         $(function () {
-            $("#example1").DataTable();
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
+            $("#example1").DataTable({
                 "ordering": true,
-                "info": true,
-                "autoWidth": false
+                "columnDefs": [{
+                    "targets": 'no-sort',
+                    "orderable": false,
+                }]
             });
+
         });
-        </script>
+    </script>
+
+    <script>
+        function ConfirmDelete() {
+            var x = confirm("Bạn muốn xóa thương hiệu này??");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+    </script>
 }

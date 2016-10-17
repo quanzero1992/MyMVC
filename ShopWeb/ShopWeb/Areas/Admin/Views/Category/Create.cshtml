@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@using ShopWeb.Models;
+@model ShopWeb.Models.category
+
+@section AddCss
+{
+    <style>
+        .profile-user-img {
+            margin: 0 auto;
+            width: 300px;
+            height: 300px;
+            padding: 3px;
+            border: 3px solid #d2d6de;
+        }
+
+        .img-circle {
+            border-radius: 1%;
+        }
+
+        .carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        img {
+            border: 0;
+        }
+
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+    </style>
+}
+
+<!-- Main content -->
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" alt="User profile picture" src="@Url.Content("~/Areas/Admin/Assets/dist/img/300x300.jpg")" id="MainImage">
+
+                    <h3 class="profile-username text-center">Áo thu đông aOneMall</h3>
+
+                    <p class="text-muted text-center">Software Engineer</p>
+
+                    <label class="btn btn-primary btn-block" id="exampleInputFile" onchange="onFileSelected(event)">
+                        <b>Thay đổi hình ảnh </b>
+                        <input type="file" style="display: none;">
+                    </label>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#settings" data-toggle="tab">Thông tin cơ bản</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="settings">
+                        @Html.ValidationSummary(true)
+                        @using (Html.BeginForm("Create", "Category", FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Name, new { @for = "inputName", @class = "col-sm-2 control-label" })
+
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @id = "inputName", @placeholder = "Tên chủ đề" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Category_Brand, new { @for = "inputEmail", @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.Category_Brand, new { @class = "form-control", @id = "inputPrice", @placeholder = "Kết nối thương hiệu" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Desc, new { @for = "inputDesc", @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextAreaFor(x => x.Desc, new { @class = "form-control", @id = "inputDesc", @placeholder = "Mô tả chủ đề" })
+                                </div>
+                            </div>    
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-danger">Thêm mới</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+            <!-- /.tab-content -->
+        </div>
+        <!-- /.nav-tabs-custom -->
+    </div>
+    <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+</section>

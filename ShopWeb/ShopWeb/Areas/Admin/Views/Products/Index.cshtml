@@ -19,7 +19,9 @@
 {
     <link href="@Url.Content("~/Areas/Admin/Assets/plugins/datatables/dataTables.bootstrap.css")" rel="stylesheet" />
     <style type="text/css">
-        .highlight { background-color: yellow }
+        .highlight {
+            background-color: yellow;
+        }
     </style>
 }
 
@@ -45,7 +47,7 @@
                                 <th>Mới/cũ</th>
                                 <th class="no-sort">Loại sản phẩm</th>
                                 <th class="no-sort">Trạng thái</th>
-                                <th style="text-align:center" class="no-sort">#</th>
+                                <th style="text-align: center" class="no-sort">#</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,20 +59,20 @@
                                     <td>@item.DateImport</td>
                                     <td>@item.Price.Value.ToString("#,#")</td>
                                     <td>@item.Stars</td>
-                                    <td>@pBrand.FirstOrDefault(x=>x.ID == item.Brands.ConvertToInt()).BrandName</td>
-                                    <td>@pCond.FirstOrDefault(x=>x.ConditionID == item.Condition).Description</td>
-                                    <td>@pType.FirstOrDefault(x=>x.id == item.ProductTypeID).P_TypeName</td>
+                                    <td>@pBrand.FirstOrDefault(x => x.ID == item.Brands.ConvertToInt()).BrandName</td>
+                                    <td>@pCond.FirstOrDefault(x => x.ConditionID == item.Condition).Description</td>
+                                    <td>@pType.FirstOrDefault(x => x.id == item.ProductTypeID).P_TypeName</td>
                                     <td>@item.Status</td>
-                                    <td> 
-                                        <a href="@Url.Action("Create","Products")" title="Thêm mới"> <i class="fa fa-plus-square" aria-hidden="true"></i> </a> &nbsp; | &nbsp;
-                                        <a href="#" title="Sửa"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a> &nbsp; | &nbsp;
-                                        <a href="#" title="Xóa"> <i class="fa fa-trash" aria-hidden="true"></i> </a>
+                                    <td>
+                                        <a href="@Url.Action("Create", "Products")" title="Thêm mới"><i class="fa fa-plus-square" aria-hidden="true"></i></a>&nbsp; | &nbsp;
+                                        <a href="@Url.Action("Edit", "Products", new { id = @item.ID })" title="Sửa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp; | &nbsp;
+                                        <a href="@Url.Action("Delete", "Products", new { id = @item.ID })" title="Xóa" onclick = "return ConfirmDelete();"><i class="fa fa-trash" aria-hidden="true"></i></a>
 
-                                    </td> 
+                                    </td>
                                 </tr>
                             }
                         </tbody>
-                
+
                     </table>
                 </div>
                 <!-- /.box-body -->
@@ -101,9 +103,19 @@
                     "orderable": false,
                 }]
             });
-     
+
         });
 
-        </script>
+    </script>
+
+    <script>
+        function ConfirmDelete() {
+            var x = confirm("Bạn muốn xóa sản phẩm này??");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+    </script>
 }
 
